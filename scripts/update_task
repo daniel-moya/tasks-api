@@ -1,0 +1,6 @@
+!#/usr/bin/env bash
+curl http://localhost:8080/tasks \
+--include \
+--header "Content-Type: application/json" \
+--request "PUT" \
+--data '{"id": 1, "title": "First Task Edited", "done": false}'
