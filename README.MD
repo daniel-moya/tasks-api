@@ -1,4 +1,4 @@
-##Get Started
+## Get Started
 ``` bash
 git clone https://github.com/daniel-moya/tasks-api.git
 cd todo-api
@@ -21,7 +21,7 @@ go run .
 
 ### Get all
 ``` bash
-curl http://localhost:8080
+curl http://localhost:8080/tasks
 ```
 
 ### Get task by Id
@@ -35,5 +35,5 @@ curl http://localhost:8080/tasks \
 --include \
 --header "Content-Type: application/json" \
 --request "POST" \
---data '{"title": "Ta", "done": true }'
+--data '{"title": "New Task", "done": true }'
 ```
