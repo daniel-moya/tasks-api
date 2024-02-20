@@ -22,7 +22,7 @@ func main() {
     router.GET("/tasks", func (c *gin.Context) { getTasks(c, db) })
     router.POST("/tasks", func (c *gin.Context) { addTask(c, db) })
     router.GET("/tasks/:id", func (c *gin.Context) { getTask(c, db) })
-
+    router.GET("/tasks/report", func (c *gin.Context) { generateTasksReport(c, db) })
 
     router.Run("localhost:8080")
 }
@@ -87,5 +87,10 @@ func getTask(c *gin.Context, db *sql.DB) {
     }
 
     c.IndentedJSON(http.StatusNotFound, "Task not found")
+}
+
+func generateTasksReport(c *gin.Context, db *sql.DB) {
+
+    c.IndentedJSON(http.StatusOK, "TO BE DONE")
 }
 
