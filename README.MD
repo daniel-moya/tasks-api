@@ -13,6 +13,9 @@ go get .
 ### Setup DB
 ``` bash
 ./setup
+
+# To remove the volume each time uncomment 
+docker volume rm todo-api_postgres_db
 ```
 
 ### Run server

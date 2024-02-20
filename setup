@@ -2,5 +2,5 @@
 
 docker stop PosgresCont
 docker container prune -f 
-docker volume rm todo-api_postgres_db
+# docker volume rm todo-api_postgres_db
 docker compose up
