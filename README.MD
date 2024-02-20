@@ -1,3 +1,24 @@
+##Get Started
+``` bash
+git clone https://github.com/daniel-moya/tasks-api.git
+cd todo-api
+```
+
+### Install deps
+``` bash
+go get .
+```
+
+### Setup DB
+``` bash
+./setup
+```
+
+### Run server
+``` bash
+go run .
+```
+
 ### Get all
 ``` bash
 curl http://localhost:8080
