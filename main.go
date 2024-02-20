@@ -19,9 +19,17 @@ var connectionStr string = "postgresql://postgres:dev@127.0.0.1/postgres?sslmode
 func main() {
     db := initDB()
     router := gin.Default()
+    
+    // Collection routes
     router.GET("/tasks", func (c *gin.Context) { getTasks(c, db) })
-    router.POST("/tasks", func (c *gin.Context) { addTask(c, db) })
-    router.GET("/tasks/:id", func (c *gin.Context) { getTask(c, db) })
+    
+    // CRUD for tasks
+    router.POST("/tasks", func (c *gin.Context) { createTask(c, db) })
+    router.GET("/tasks/:id", func (c *gin.Context) { readTask(c, db) })
+    router.PUT("/tasks/:id", func (c *gin.Context) { updateTask(c, db) })
+    router.DELETE("/tasks/:id", func (c *gin.Context) { removeTask(c, db) })
+
+    // Report routes
     router.GET("/tasks/report", func (c *gin.Context) { generateTasksReport(c, db) })
 
     router.Run("localhost:8080")
@@ -56,7 +64,7 @@ func getTasks(c *gin.Context, db *sql.DB) {
 }
 
 
-func addTask(c *gin.Context, db *sql.DB) {
+func createTask(c *gin.Context, db *sql.DB) {
     var newTask task
 
     if err := c.BindJSON(&newTask); err != nil {
@@ -70,7 +78,7 @@ func addTask(c *gin.Context, db *sql.DB) {
     c.IndentedJSON(http.StatusOK, newTask)
 }
 
-func getTask(c *gin.Context, db *sql.DB) {
+func readTask(c *gin.Context, db *sql.DB) {
     rows, err := db.Query("SELECT * FROM tasks WHERE id = ($1)", c.Param("id"))
 
     if err != nil {
@@ -88,6 +96,16 @@ func getTask(c *gin.Context, db *sql.DB) {
 
     c.IndentedJSON(http.StatusNotFound, "Task not found")
 }
+
+func updateTask(c *gin.Context, db *sql.DB) {
+
+    c.IndentedJSON(http.StatusOK, "TO BE DONE")
+}
+
+func removeTask(c *gin.Context, db *sql.DB) {
+    c.IndentedJSON(http.StatusOK, "TO BE DONE")
+}
+
 
 func generateTasksReport(c *gin.Context, db *sql.DB) {
 
